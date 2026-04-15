@@ -26,7 +26,7 @@
 
               home.packages = with pkgs; [
                waybar
-	             hyprland
+      	       hyprland
                hyprland-qtutils
                hyprpolkitagent
                bibata-cursors
@@ -36,17 +36,19 @@
                grim
                hyprshot
                cliphist
-               bibata-cursors
               ];
+
+      	      home.pointerCursor = {
+      	       name = "Bibata-Modern-Ice";
+      	       package = pkgs.bibata-cursors;
+      	       size = 24;
+      	       gtk.enable = true;
+      	       hyprcursor.enable = true;
+      	      };
+
             }
           ];
         };
-home.pointerCursor = {
-    name = "Bibata-Modern-Ice";
-    package = pkgs.bibata-cursors;
-    size = 24;
-    gtk.enable = true;
-  };
     };
 }
 
