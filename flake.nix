@@ -15,18 +15,19 @@
       homeConfigurations."yominater" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-
           modules = [
+          ./hyprland.nix
             {
               home.username = "yominater";
               home.homeDirectory = "/home/yominater";
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
 
+              wayland.windowManager.hyprland.enable = true;
+
 
               home.packages = with pkgs; [
                waybar
-      	       hyprland
                hyprland-qtutils
                hyprpolkitagent
                bibata-cursors
