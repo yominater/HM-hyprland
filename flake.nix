@@ -32,11 +32,13 @@
                hyprpolkitagent
                bibata-cursors
                hyprpaper
+               hyprsunset
                awww
                wofi
                grim
                hyprshot
                cliphist
+               wl-clipboard
               ];
 
       	      home.pointerCursor = {

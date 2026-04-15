@@ -1,5 +1,11 @@
 {
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland = {
+  plugins = [
+    # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
+    # inputs.hyprsysteminfo.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+
+  settings= {
     "$mainMod" = "ALT";
     "$WinMod" = "SUPER";
     "$terminal" = "konsole";
@@ -9,6 +15,22 @@
     "$obsidianX" = "flatpak run md.obsidian.Obsidian";
     "$ss_copy" = "grim -g \"$(slurp -d)\" - | wl-copy";
     "$ss_save" = "slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')";
+    
+    exec-once = [
+      "systemctl --user start hyprpolkitagent"
+      #"hyprctl setcursor $cursor $cursor_size"
+      "waybar"
+      "awww img ~/images/Wallpapers/Aenami/alena-aenami-horizon-1k.jpg"
+      "hyprsunset"
+      "blueman-applet"
+      "dunst"
+      "cliphist"
+    ];
+    env = [
+      "QT_QPA_PLATFORM,wayland"
+      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "QT_QPA_PLATFORMTHEME,qt6ct"
+    ];
 
     general = {
       gaps_in = 0;
@@ -156,4 +178,5 @@
     ];
 
   };
+  }; # settings
 }
