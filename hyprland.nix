@@ -1,9 +1,9 @@
-{
+{ config, pkgs, nixpkgs, hyprland, hyprland-plugins, ... }: {
   wayland.windowManager.hyprland = {
   plugins = [
-    # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
-    # inputs.hyprsysteminfo.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
+      #hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      # ...
+    ];
 
   settings= {
     "$mainMod" = "ALT";
@@ -15,11 +15,13 @@
     "$obsidianX" = "flatpak run md.obsidian.Obsidian";
     "$ss_copy" = "grim -g \"$(slurp -d)\" - | wl-copy";
     "$ss_save" = "slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')";
+    "$hyprshot" = "hyprshot -m region --clipboard-only --freeze";
     
     exec-once = [
       "systemctl --user start hyprpolkitagent"
       #"hyprctl setcursor $cursor $cursor_size"
       "waybar"
+      "awww-daemon &"
       "awww img ~/images/Wallpapers/Aenami/alena-aenami-horizon-1k.jpg"
       "hyprsunset"
       "blueman-applet"
@@ -39,7 +41,6 @@
       layout = "dwindle";
       "col.active_border" = "rgba(ebdbb2aa)";
 	    "col.inactive_border" = "rgba(595959aa)";
-      resize_on_border = true;
     };
 
     dwindle = {
@@ -74,7 +75,7 @@
     };
     device = {
       name = "roccat-roccat-burst-pro";
-      sensitivity = -0.4;
+      sensitivity = -0.6;
     };
 
     animations = {
@@ -121,7 +122,7 @@
         "$mainMod, F, exec, firefox"
         "$mainMod, P, exec, systemctl suspend"
         "$winMod SHIFT, s, exec, $hyprshot"
-        "$winMod, E, exec, $fileManager"
+        "$winMod, E, exec, $fileMan"
         "$mainMod, D, exec, $menu"
         "$mainMod, O, exec, $obsidianX"
 

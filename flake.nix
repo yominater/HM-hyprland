@@ -39,6 +39,7 @@
                hyprshot
                cliphist
                wl-clipboard
+               nerd-fonts.ubuntu
               ];
 
       	      home.pointerCursor = {
