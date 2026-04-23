@@ -17,6 +17,7 @@
           inherit pkgs;
           modules = [
           ./hyprland.nix
+          ./waybar.nix
             {
               home.username = "yominater";
               home.homeDirectory = "/home/yominater";
@@ -27,7 +28,6 @@
 
 
               home.packages = with pkgs; [
-               waybar
                hyprland-qtutils
                hyprpolkitagent
                bibata-cursors
@@ -40,6 +40,7 @@
                cliphist
                wl-clipboard
                nerd-fonts.ubuntu
+               #hyprlandPlugins.hyprexpo
               ];
 
       	      home.pointerCursor = {
