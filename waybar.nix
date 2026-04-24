@@ -87,7 +87,7 @@
   "interval" = 1;
 };
   "custom/arch" = {
-    "format" = "󰣭";
+    "format" = "";
     "on-click" = "pkill waybar; waybar &";
     "tooltip" =false;
     "icon-size" = 16;
