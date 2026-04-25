@@ -1,31 +1,31 @@
 { config, pkgs, nixpkgs, hyprland, hyprland-plugins, ... }: {
   wayland.windowManager.hyprland = {
-  enable = true;
+    enable = true;
   plugins = [
       #hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
       # ...
     ];
 
   settings= {
+    monitor = "eDP-1,1366x768@60,0x0,1";
     "$mainMod" = "ALT";
-    "$WinMod" = "SUPER";
-    "$terminal" = "konsole";
+    "$terminal" = "foot";
     "$fileMan" = "thunar";
     "$menu" = "wofi --show drun";
     "$browser" = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
-    "$obsidianX" = "flatpak run md.obsidian.Obsidian";
+    "$obsidianX" = "obsidian";
     "$ss_copy" = "grim -g \"$(slurp -d)\" - | wl-copy";
     "$ss_save" = "slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')";
     "$hyprshot" = "hyprshot -m region --clipboard-only --freeze";
     
     exec-once = [
+      "$terminal"
       "systemctl --user start hyprpolkitagent"
       #"hyprctl setcursor $cursor $cursor_size"
       "waybar"
       "awww-daemon &"
       "awww img ~/images/Wallpapers/Aenami/alena-aenami-horizon-1k.jpg"
       "hyprsunset"
-      "blueman-applet"
       "dunst"
       "cliphist"
     ];
@@ -38,17 +38,20 @@
     general = {
       gaps_in = 0;
       gaps_out = 0;
-      border_size = 4;
+      border_size = 2;
       layout = "dwindle";
       "col.active_border" = "rgba(ebdbb2aa)";
 	    "col.inactive_border" = "rgba(595959aa)";
+      allow_tearing = false;
     };
-
+    # render {
+    #   new_render_scheduling = true;
+    #}
     dwindle = {
       pseudotile = true;
       preserve_split = true;
       force_split = 2;
-      default_split_ratio = 1.3;
+      default_split_ratio = 1.2;
     };
 
     cursor = {
@@ -60,7 +63,7 @@
       active_opacity = 1.0;
       inactive_opacity = 1.0;
       blur = {
-        enabled = true;
+        enabled = false;
         size = 3;
         passes = 3;
         vibrancy = 0.2696;
@@ -73,14 +76,21 @@
       repeat_delay = 200;
       repeat_rate = 32;
       follow_mouse = 1;
+      sensitivity = 0;
+      touchpad = {
+        natural_scroll = false;
+      };
     };
     device = {
       name = "roccat-roccat-burst-pro";
       sensitivity = -0.6;
     };
+    gestures = {
+      workspace_swipe = false;
+    };
 
     animations = {
-      enabled = true;
+      enabled = no;
       bezier = [
         "easeOutQuint,0.23,1,0.32,1"
         "easeInOutCubic,0.65,0.05,0.36,1"
@@ -114,11 +124,13 @@
       enable_swallow = true; # when an app is run by a terminal, make the terminal go away while the app is running
       vfr = true; # always keep on
       vrr = 2; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only, 3 = fullscreen games/media)
+      disable_autoreload = true;
     };
 
     bind =
       [
         "$mainMod, RETURN, exec, $terminal"
+        "$mainMod, W, exec, $terminal"
         "$mainMod SHIFT, RETURN, exec, $terminal --title floating"
         "$mainMod, F, exec, firefox"
         "$mainMod, P, exec, systemctl suspend"
@@ -130,16 +142,18 @@
         "$mainMod, TAB,workspace,previous"
         "$mainMod, A, fullscreen,"
         "$mainMod SHIFT, V, togglefloating,"
-        "$mainMod SHIFT, M, exit,"
         "$mainMod, Q, killactive"
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-        ",F12, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 10%+"
-        ",F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
-        "$mainMod,F12, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 1%+"
-        "$mainMod,F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+        ",F10, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%+"
+        ",F19, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
         ", F8, exec, playerctl play-pause"
+
+        ", F7, exec, brightnessctl s 5%+"
+        ", F6, exec, brightnessctl s 5%-"
+        ", F7 SHIFT, exec, brightnessctl s 1%+"
+        ", F6 SHIFT, exec, brightnessctl s 1%-"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
@@ -153,6 +167,9 @@
         "$mainMod SHIFT, L, movewindow, r"
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod SHIFT, J, movewindow, d"
+
+        "$mainMod SHIFT, XF86PwerOff, exit,"
+        "$mainMod SHIFT, C, exec, hyprctl reload"
       ]
       ++ (
         # workspaces
