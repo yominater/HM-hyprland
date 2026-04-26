@@ -33,6 +33,9 @@
 		"custom/left-arrow-dark"
 		"disk"
 		"custom/left-arrow-light"
+		"custom/left-arrow-dark"
+		"battery"
+		"custom/left-arrow-light"
 		"custom/arch"
 	];
 
@@ -119,7 +122,7 @@
 	# 
 	"memory" = {
 		"interval" = 5;
-		"format" = "{}%/{swapPercentage}%";
+		"format" = "  {}%/{swapPercentage}%";
 	};
 	# 
 	"cpu" = {
@@ -132,7 +135,7 @@
 			"warning" = 30;
 			"critical" = 15;
 		};
-		"format" = "{icon} {capacity}%";
+		"format" = "{icon}  {capacity}%";
 		"format-icons" = [
 			""
 			""
@@ -140,20 +143,21 @@
 			""
 			""
 		];
-    "on-click" = "pkill waybar; waybar &";
+    on-click = "pkill waybar; waybar &";
+    format-charging = "󱐋 {icon}  {capacity}%";
 	};
 	# 
 	"disk" = {
 		"interval" = 5;
-		"format" = "{specific_free:0.1f}";
+		"format" = "  {specific_free:0.1f}";
 		"path" = "/";
     "unit" = "GB";
 	};
 
   "pulseaudio" = {
-  	"format" = "{volume:2}%";
-  	"format-bluetooth" = "{volume}%";
-  	"format-muted" = "󰝟 {volume}";
+  	"format" = "{icon}  {volume:2}%";
+  	"format-bluetooth" = "  {volume}%";
+  	"format-muted" = "󰝟  {volume}";
   	"format-icons" = {
   		"headphones" = "";
   		"default" = [
@@ -162,7 +166,6 @@
   		];
   	};
   	"scroll-step" = 5;
-    icon-size = 30;
   	"on-click" = "pamixer -t";
   	"on-click-right" = "terminator -e pavucontrol";
   };
@@ -171,10 +174,10 @@
 
   style = ''
     * {
-    	font-size: 16px;
     	font-family: "UbuntuMono Nerd Font Mono", "UbuntuMono Nerd Font Propo", sans-serif;
     	font-weight: 700;
     	padding: 0 0px;
+      font-size: 14px;
     }
     
     window#waybar {
@@ -276,7 +279,6 @@
     }
     #pulseaudio {
     	color: #2aa198;
-      font-size: 14px;
     }
   ''; # end of stylesheet
 

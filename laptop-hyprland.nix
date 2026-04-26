@@ -34,6 +34,7 @@
       "QT_QPA_PLATFORM,wayland"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       "QT_QPA_PLATFORMTHEME,qt6ct"
+      "EDITOR,nvim"
     ];
 
     general = {
@@ -196,8 +197,10 @@
       "float on, match:title ^(floating)$"
       "suppress_event = maximise, match:class = .*"
       "float on, match:title ^(Picture-in-Picture)"
+      "border_size = 0, match:float false, match:workspace w[tv1]"
+      "border_size = 0, match:float false, match:workspace f[1]"
     ];
 
-  };
   }; # settings
+  }; # hyprland
 }
