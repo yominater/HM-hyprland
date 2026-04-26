@@ -124,7 +124,7 @@
 	# 
 	"cpu" = {
 		"interval" = 5;
-		"format" = "{usage}%";
+		"format" = "  {usage}%";
 	};
 	"battery" = {
 		"states" = {

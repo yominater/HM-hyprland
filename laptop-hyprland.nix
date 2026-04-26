@@ -12,7 +12,8 @@
     "$terminal" = "foot";
     "$fileMan" = "thunar";
     "$menu" = "wofi --show drun";
-    "$browser" = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    "$firefox" = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    "$browser" = "chromium";
     "$obsidianX" = "obsidian";
     "$ss_copy" = "grim -g \"$(slurp -d)\" - | wl-copy";
     "$ss_save" = "slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png')";
@@ -24,7 +25,7 @@
       #"hyprctl setcursor $cursor $cursor_size"
       "waybar"
       "awww-daemon &"
-      "awww img ~/images/Wallpapers/Aenami/alena-aenami-horizon-1k.jpg"
+      "awww img ~/images/wallpapers/current/*"
       "hyprsunset"
       "dunst"
       "cliphist"
@@ -79,6 +80,7 @@
       sensitivity = 0;
       touchpad = {
         natural_scroll = false;
+        scroll_factor = 0.5;
       };
     };
     device = {
@@ -132,7 +134,7 @@
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, W, exec, $terminal"
         "$mainMod SHIFT, RETURN, exec, $terminal --title floating"
-        "$mainMod, F, exec, firefox"
+        "$mainMod, F, exec, $browser"
         "$mainMod, P, exec, systemctl suspend"
         "$winMod SHIFT, s, exec, $hyprshot"
         "$winMod, E, exec, $fileMan"

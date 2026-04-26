@@ -87,6 +87,10 @@
                #hyprlandPlugins.hyprexpo
               ];
 
+              home.sessionVariables = {
+                EDITOR = "nvim";
+              };
+
       	      home.pointerCursor = {
       	       name = "Bibata-Modern-Ice";
       	       package = pkgs.bibata-cursors;
