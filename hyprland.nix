@@ -1,6 +1,5 @@
 { config, pkgs, nixpkgs, hyprland, hyprland-plugins, ... }: {
   wayland.windowManager.hyprland = {
-  enable = true;
   plugins = [
       #hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
       # ...
@@ -164,7 +163,7 @@
               "$mainMod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
             ]
           )
-          9)
+          10)
       );
       bindm = [
         "$winMod, mouse:272, movewindow"

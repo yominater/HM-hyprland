@@ -151,7 +151,7 @@
 	};
 
   "pulseaudio" = {
-  	"format" = "{volume =2}%";
+  	"format" = "{volume:2}%";
   	"format-bluetooth" = "{volume}%";
   	"format-muted" = "󰝟 {volume}";
   	"format-icons" = {

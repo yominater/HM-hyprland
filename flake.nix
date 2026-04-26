@@ -98,6 +98,54 @@
             }
           ];
         }; # yomi@nixos config
+              homeConfigurations."yomi@fedora" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+          ./hyprland.nix
+          ./waybar.nix
+            {
+              home.username = "yomi";
+              home.homeDirectory = "/home/yomi";
+              home.stateVersion = "24.05";
+              programs.home-manager.enable = true;
+
+              wayland.windowManager.hyprland = {
+                enable = true;
+                package = null;
+              };
+
+
+
+              home.packages = with pkgs; [
+               hyprland-qtutils
+               bibata-cursors
+               hyprpaper
+               hyprsunset
+               awww
+               wofi
+               grim
+               hyprshot
+               cliphist
+               wl-clipboard
+               dmenu
+
+               #hyprlandPlugins.hyprexpo
+              ];
+       	      home.pointerCursor = {
+      	       name = "Bibata-Modern-Ice";
+      	       package = pkgs.bibata-cursors;
+      	       size = 30;
+      	       gtk.enable = true;
+      	       hyprcursor.enable = true;
+      	      };
+
+
+
+            }
+          ];
+        }; # fedora config
+
 
     }; # in
 } # flake
