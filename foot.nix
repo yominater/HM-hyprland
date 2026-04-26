@@ -1,11 +1,10 @@
 {
-	programs.foot = {
-		enable = true;
+   programs.foot = {
+    enable = true;
     settings = {
       main = {
-        font = "Ubuntu Mono:size=19";
-        font-bold = "Ubuntu Mono:style=Bold:size=19";
-        bold-text-in-bright=yes;
+        font = "Ubuntu Sans Mono:size=19";
+        bold-text-in-bright="yes";
       };
       cursor = {
         blink = "yes";

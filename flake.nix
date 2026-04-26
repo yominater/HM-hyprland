@@ -61,7 +61,7 @@
           modules = [
           ./laptop-hyprland.nix
           ./waybar.nix
-	        ./foot.nix
+          ./foot.nix
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";

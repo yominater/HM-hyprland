@@ -85,12 +85,12 @@
       name = "roccat-roccat-burst-pro";
       sensitivity = -0.6;
     };
-    gestures = {
-      workspace_swipe = false;
-    };
+    #gestures = {
+    #  workspace_swipe = false;
+    #};
 
     animations = {
-      enabled = no;
+      enabled = "no";
       bezier = [
         "easeOutQuint,0.23,1,0.32,1"
         "easeInOutCubic,0.65,0.05,0.36,1"
@@ -168,7 +168,7 @@
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod SHIFT, J, movewindow, d"
 
-        "$mainMod SHIFT, XF86PwerOff, exit,"
+        "$mainMod SHIFT, XF86PowerOff, exit,"
         "$mainMod SHIFT, C, exec, hyprctl reload"
       ]
       ++ (
@@ -184,8 +184,8 @@
           9)
       );
       bindm = [
-        "$winMod, mouse:272, movewindow"
-        "$winMod, mouse:273, resizewindow"
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
 
     windowrule = [
