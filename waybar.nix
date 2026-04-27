@@ -174,7 +174,7 @@
 
   style = ''
     * {
-    	font-family: "UbuntuMono Nerd Font Mono", "UbuntuMono Nerd Font Propo", sans-serif;
+    	font-family: "UbuntuMono Nerd Font";
     	font-weight: 700;
     	padding: 0 0px;
       font-size: 14px;
