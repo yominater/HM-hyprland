@@ -60,6 +60,7 @@
           inherit pkgs;
           modules = [
           ./laptop-hyprland.nix
+          ./windowRules.nix
           ./waybar.nix
           ./foot.nix
             {
@@ -108,6 +109,7 @@
           modules = [
           ./hyprland.nix
           ./waybar.nix
+          ./windowRules.nix
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";
