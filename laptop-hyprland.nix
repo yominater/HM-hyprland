@@ -70,6 +70,9 @@
         passes = 3;
         vibrancy = 0.2696;
       };
+      shadow = {
+        enabled = false;
+      };
     };
 
     input = {

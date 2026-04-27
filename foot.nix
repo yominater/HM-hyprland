@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Ubuntu Sans Mono:size=19";
+        font = "Ubuntu Sans Mono:size=17.8";
         bold-text-in-bright="yes";
       };
       cursor = {
