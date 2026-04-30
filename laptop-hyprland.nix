@@ -84,7 +84,7 @@
       sensitivity = 0;
       touchpad = {
         natural_scroll = false;
-        scroll_factor = 0.5;
+        scroll_factor = 0.1;
       };
     };
     device = {
@@ -153,7 +153,7 @@
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         ",F10, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",F19, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+        ",F9, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%-"
         ", F8, exec, playerctl play-pause"
 
         ", F7, exec, brightnessctl s 5%+"
