@@ -86,6 +86,9 @@
                nerd-fonts.ubuntu
                dmenu
                #hyprlandPlugins.hyprexpo
+	       libreoffice
+	       ranger
+	       fastfetch
               ];
 
               home.sessionVariables = {
@@ -120,6 +123,7 @@
                 enable = true;
                 package = null;
               };
+
 
 
 
