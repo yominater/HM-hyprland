@@ -39,7 +39,6 @@
                hyprshot
                cliphist
                wl-clipboard
-               nerd-fonts.ubuntu
                dmenu
                #hyprlandPlugins.hyprexpo
               ];
