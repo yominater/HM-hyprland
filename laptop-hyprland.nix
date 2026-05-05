@@ -84,7 +84,7 @@
       sensitivity = 0;
       touchpad = {
         natural_scroll = false;
-        #scroll_factor = 0.1;
+        scroll_factor = 0.5;
       };
     };
     device = {
