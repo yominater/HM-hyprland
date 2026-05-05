@@ -8,7 +8,7 @@
   settings= {
     "$mainMod" = "ALT";
     "$WinMod" = "SUPER";
-    "$terminal" = "konsole";
+    "$terminal" = "foot";
     "$fileMan" = "thunar";
     "$menu" = "wofi --show drun";
     "$browser" = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
@@ -138,6 +138,7 @@
         ",F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
         "$mainMod,F12, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 1%+"
         "$mainMod,F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+        ",F10, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ", F8, exec, playerctl play-pause"
 
         "$mainMod, left, movefocus, l"

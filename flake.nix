@@ -20,6 +20,7 @@
           ./hyprland.nix
           ./waybar.nix
           ./windowRules.nix
+          ./foot.nix
             {
               home.username = "yominater";
               home.homeDirectory = "/home/yominater";

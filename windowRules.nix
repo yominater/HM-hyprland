@@ -1,6 +1,10 @@
 {
   wayland.windowManager.hyprland = {
-      extraConfig = ''
+    settings = {
+      # length x height
+      "$windowSize" = "600 350";
+    };
+    extraConfig = ''
     workspace = w[tv1], gapsout:0, gapsin:0
     workspace = f[1], gapsout:0, gapsin:0
         windowrule {
@@ -86,6 +90,13 @@
       match:title =^(Save.*)$
       float = on
       size = 350 350
+      move = center
+    }
+    windowrule {
+      name = Save
+      match:title =^File Upload.*$
+      float = on
+      size = $windowSize
       move = center
     }
     '';
