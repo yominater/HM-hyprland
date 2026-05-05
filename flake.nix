@@ -18,6 +18,7 @@
           modules = [
           ./hyprland.nix
           ./waybar.nix
+          ./windowRules.nix
             {
               home.username = "yominater";
               home.homeDirectory = "/home/yominater";
