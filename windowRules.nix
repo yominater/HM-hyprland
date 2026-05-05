@@ -55,6 +55,13 @@
     }
     windowrule {
       name = Floating Save Windows
+      match:title = ^(Open.*)$
+      float = on
+      size = 350 350
+      move = center
+    }
+    windowrule {
+      name = Floating Save Windows
       match:title = ^(Open Files)$
       float = on
       size = 350 350
@@ -76,7 +83,7 @@
     }
     windowrule {
       name = Save
-      match:title =^(Save)$
+      match:title =^(Save.*)$
       float = on
       size = 350 350
       move = center
