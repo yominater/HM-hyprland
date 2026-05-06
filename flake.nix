@@ -65,6 +65,8 @@
           ./windowRules.nix
           ./waybar.nix
           ./foot.nix
+          ./hypridle.nix
+          ./hyprlock.nix
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";

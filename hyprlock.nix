@@ -15,9 +15,9 @@
 
         "$font" = "Ubuntu Mono";
 
-        general {
+        general = {
             hide_cursor = false;
-        }
+        };
 
         # uncomment to enable fingerprint authentication
         # auth {
@@ -32,16 +32,25 @@
         animations = {
             enabled = true;
             bezier = "linear, 1, 1, 0, 0";
-            animation = "fadeIn, 1, 5, linear";
-            animation = "fadeOut, 1, 5, linear";
-            animation = "inputFieldDots, 1, 2, linear";
-        }
+            fadeIn = {
+              duration = 300;
+              bezier = "linear";
+            };
+            fadeOut = {
+              duration = 300;
+              bezier = "linear";
+            };
+            inputFieldDots = {
+              duration = 300;
+              bezier = "linear";
+            };
+        };
 
         background = {
             monitor = "";
-            path = "~/images/Wallpapers/alena-aenami-eclipse-1k.jpg";
+            path = "~/images/wallpapers/Aenami/alena-aenami-eclipse-1k.jpg";
             blur_passes = 3;
-        }
+        };
 
         input-field = {
             monitor = "";
@@ -57,9 +66,9 @@
             fade_on_empty = false;
             rounding = 15;
 
-            font_family = $font;
+            font_family = "$font";
             placeholder_text = "Input password...";
-            fail_text = $PAMFAIL;
+            fail_text = "$PAMFAIL";
 
             # uncomment to use a letter instead of a dot to indicate the typed password
             # dots_text_format = *
@@ -69,45 +78,46 @@
             # uncomment to use an input indicator that does not show the password length (similar to swaylock's input indicator)
             # hide_input = true
 
-            position = 0, -20;
+            position = "0, -20";
             halign = "center";
             valign = "center";
-        }
+        };
 
         # TIME
-        label {
+        label = {
             monitor = "";
-            text = $TIME; # ref. https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/#variable-substitution
+            text = "$TIME"; # ref. https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/#variable-substitution
             font_size = 70;
-            font_family = $font;
+            font_family = "$font";
 
             position = "-30, 0";
             halign = "right";
             valign = "top";
         onclick = "systemctl suspend";
-        }
-
-        # DATE
-        label {
-            monitor = "";
-            text = "cmd[update:60000] date +%A, %d %B %Y" # update every 60 seconds
-            font_size = 25;
-            font_family = $font;
-
-            position = "-20, -150";
-            halign = "right";
-            valign = "top";
-        onclick = s"ystemctl suspend";
-        }
-        # User
-        label {
-            monitor = ""'
-            text = $USER;
-            font_size = 32;
-            font_family = $font;
-            position = "0, 45";
-            halign = "center";
-            valigh = "top";
-        }
+        };
+#
+#        # DATE
+#        label = {
+#            monitor = "";
+#            text = "cmd[update:60000] date +%A, %d %B %Y"; # update every 60 seconds
+#            font_size = 25;
+#            font_family = "$font";
+#
+#            position = "-20, -150";
+#            halign = "right";
+#            valign = "top";
+#        onclick = s"ystemctl suspend";
+#        };
+#        # User
+#        label = {
+#            monitor = ""'
+#            text = "$USER";
+#            font_size = 32;
+#            font_family = "$font";
+#            position = "0, 45";
+#            halign = "center";
+#            valigh = "top";
+#        };
     }; # settings
-} # hyprlock
+}; # hyprlock
+}

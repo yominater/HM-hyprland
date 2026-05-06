@@ -140,7 +140,7 @@
         "$mainMod SHIFT, RETURN, exec, $terminal --title floating"
         "$mainMod, F, exec, $browser"
         "$mainMod, P, exec, systemctl suspend"
-        "F5, exec, $hyprshot"
+#        "F5, exec, sh -c '$hyprshot'"
         "$mainMod, E, exec, $fileMan"
         "$mainMod, D, exec, $menu"
         "$mainMod, O, exec, $obsidianX"
