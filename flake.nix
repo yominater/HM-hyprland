@@ -13,6 +13,9 @@
       system = "x86_64-linux"; # change if needed
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      ############
+      ### Mint ###
+      ############
       homeConfigurations."yominater@Alex-PC-4-Mint" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -57,6 +60,9 @@
             }
           ];
         };
+      #############
+      ### NixOS ###
+      #############
       homeConfigurations."yomi@nixos" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -110,13 +116,17 @@
             }
           ];
         }; # yomi@nixos config
-              homeConfigurations."yomi@fedora" =
+      ##############
+      ### Fedora ###
+      ##############
+       homeConfigurations."yomi@fedora" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
           ./hyprland.nix
           ./waybar.nix
           ./windowRules.nix
+
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";
@@ -143,6 +153,7 @@
                cliphist
                wl-clipboard
                dmenu
+               via
 
                #hyprlandPlugins.hyprexpo
               ];

@@ -8,8 +8,8 @@
   settings= {
     "$mainMod" = "ALT";
     "$WinMod" = "SUPER";
-    "$terminal" = "foot";
-    "$fileMan" = "thunar";
+    "$terminal" = "konsole";
+    "$fileMan" = "dolphin";
     "$menu" = "wofi --show drun";
     "$browser" = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland";
     "$obsidianX" = "flatpak run md.obsidian.Obsidian";
@@ -44,7 +44,6 @@
     };
 
     dwindle = {
-      pseudotile = true;
       preserve_split = true;
       force_split = 2;
       default_split_ratio = 1.3;
@@ -111,7 +110,6 @@
       disable_hyprland_logo = true;
       swallow_regex = "^(Alacritty|Konsole)$";
       enable_swallow = true; # when an app is run by a terminal, make the terminal go away while the app is running
-      vfr = true; # always keep on
       vrr = 2; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only, 3 = fullscreen games/media)
     };
 
