@@ -6,6 +6,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/549bd84d6279f9852cae6225e372cc67fb91a4c1";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
+    
+    #hyprland.url = "github:hyprwm/Hyprland";
+    #hyprland-plugins = {
+    #  url = "github:hyprwm/hyprland-plugins";
+    #  inputs.hyprland.follows = "hyprland";
+    #};
   };
 
   outputs = { nixpkgs, home-manager, ... }:
@@ -95,7 +101,6 @@
                wl-clipboard
                nerd-fonts.ubuntu
                dmenu
-               #hyprlandPlugins.hyprexpo
 	       libreoffice
 	       ranger
 	       fastfetch
@@ -122,6 +127,8 @@
        homeConfigurations."yomi@fedora" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+
+
           modules = [
           ./hyprland.nix
           ./waybar.nix
@@ -135,7 +142,6 @@
 
               wayland.windowManager.hyprland = {
                 enable = true;
-                package = null;
               };
 
 
@@ -153,9 +159,7 @@
                cliphist
                wl-clipboard
                dmenu
-               via
 
-               #hyprlandPlugins.hyprexpo
               ];
        	      home.pointerCursor = {
       	       name = "Bibata-Modern-Ice";

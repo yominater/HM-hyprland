@@ -1,9 +1,6 @@
-{ config, pkgs, nixpkgs, hyprland, hyprland-plugins, ... }: {
+{ inputs, config, pkgs, nixpkgs, hyprland, hyprland-plugins, ... }: {
   wayland.windowManager.hyprland = {
-  plugins = [
-      #hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      # ...
-    ];
+
 
   settings= {
     "$mainMod" = "ALT";
@@ -63,6 +60,10 @@
         passes = 3;
         vibrancy = 0.2696;
       };
+    };
+    debug = {
+      disable_logs = false;
+      gl_debugging = false;
     };
 
     input = {
