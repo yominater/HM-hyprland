@@ -40,6 +40,7 @@
 
 
               home.packages = with pkgs; [
+              nixgl
                hyprland-qtutils
                hyprpolkitagent
                bibata-cursors
@@ -101,9 +102,9 @@
                wl-clipboard
                nerd-fonts.ubuntu
                dmenu
-	       libreoffice
-	       ranger
-	       fastfetch
+	             libreoffice
+	             ranger
+	             fastfetch
               ];
 
               home.sessionVariables = {

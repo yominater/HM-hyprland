@@ -50,55 +50,13 @@
       size = 800 400
       move = center
     }
-    windowrule {
-      name = Floating Save Windows
-      match:title = ^(Save File)$
-      float = on
-      size = 350 350
-      move = center
-    }
-    windowrule {
-      name = Floating Save Windows
-      match:title = ^(Open.*)$
-      float = on
-      size = 350 350
-      move = center
-    }
-    windowrule {
-      name = Floating Save Windows
-      match:title = ^(Open Files)$
-      float = on
-      size = 350 350
-      move = center
-    }
-    windowrule {
-      name = Floating Save Windows
-      match:title = ^(Save File)$
-      float = on
-      size = 350 350
-      move = center
-    }
-    windowrule {
-      name = Save
-      match:title =^(Save)$
-      float = on
-      size = 350 350
-      move = center
-    }
-    windowrule {
-      name = Save
-      match:title =^(Save.*)$
-      float = on
-      size = 350 350
-      move = center
-    }
-    windowrule {
-      name = Save
-      match:title =^File Upload.*$
-      float = on
-      size = $windowSize
-      move = center
-    }
+  windowrule {
+  name = file-picker
+  match:title = ^(Open File|Open Files|Save File|Save As|Select a File|File Upload.*)$
+  float = on
+  size = 600 350
+  move = center
+}
     '';
   };
 }

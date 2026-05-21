@@ -133,12 +133,15 @@
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-        ",F12, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 10%+"
-        ",F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 10%+"
+        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
         "$mainMod,F12, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 1%+"
         "$mainMod,F11, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
         ",F10, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ", F8, exec, playerctl play-pause"
+        #", XF86AudioMute, exec, wpctl set-default $(wpctl status | grep -A 10 "Audio/Sink" | grep -v "Audio/Sink" | grep -v "*" | awk '{print $1}' | head -1)"
+        ", XF86LaunchA, exec, ~/.scripts/audio.sh"
+
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
