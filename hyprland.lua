@@ -31,7 +31,9 @@ hl.monitor({
 local terminal    = "konsole"
 local fileManager = "dolphin"
 local menu        = "wofi --show drun"
-
+local browser     = "firefox --enable-features=UseOzonePlatform --ozone-platform=wayland"
+local obsidianX   = "flatpak run md.obsidian.Obsidian"
+local hyprshot    = "hyprshot -m region --clipboard-only --freeze"
 
 -------------------
 ---- AUTOSTART ----
@@ -99,7 +101,9 @@ hl.config({
         border_size = 4,
 
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+            -- active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+            -- inactive_border = "rgba(595959aa)",
+            active_border   = "rgba(ebdbb2aa)",
             inactive_border = "rgba(595959aa)",
         },
 
@@ -167,8 +171,8 @@ hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  bezier = "
 hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "almostLinear" })
 hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "slide" })
+hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slide" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -236,7 +240,7 @@ hl.config({
         kb_model   = "",
         kb_options = "caps:escape_shifted_capslock",
         kb_rules   = "",
-        repeat_rate = "32",
+        repeat_rate = 32,
         repeat_delay = 200,
 
         follow_mouse = 1,
@@ -272,15 +276,20 @@ local winMod = "SUPER"
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(terminal .. " --title floating"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(hyprshot))
 
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(systemctl suspend))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("systemctl suspend"))
 hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + A", hl.dsp.window.fullscreen({ fullscreen, toggle}))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -296,17 +305,21 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
+-- previous workspace
+hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }))
+
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(winMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+hl.bind("XF86LaunchA",hl.dsp.exec_cmd("~/.scripts/audio.sh"))
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
@@ -332,6 +345,7 @@ end
 -- Example window rules that are useful
 local floatingSizeL = 600
 local floatingSizeW = 350
+
 
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
@@ -380,8 +394,8 @@ hl.window_rule({
         title = "^Open.*"
     },
     float = true,
-    size = floatingSizeL floatingSizeW,
-    move center,
+    size = { floatingSizeL, floatingSizeW },
+    center = true,
 })
 hl.window_rule({
     name = "Save Dialog",
@@ -389,8 +403,8 @@ hl.window_rule({
         title = "^Save.*"
     },
     float = true,
-    size = floatingSizeL floatingSizeW,
-    move center,
+    size = { floatingSizeL, floatingSizeW },
+    center = true,
 })
 hl.window_rule({
     name = "Open Dialog",
@@ -398,8 +412,8 @@ hl.window_rule({
         title = "^.*Upload.*"
     },
     float = true,
-    size = floatingSizeL floatingSizeW,
-    move center,
+    size = { floatingSizeL, floatingSizeW },
+    center = true,
 })
 hl.window_rule({
     name = "Floating Windows",
@@ -407,6 +421,6 @@ hl.window_rule({
         title = "^(floating)$"
     },
     float = true,
-    size = floatingSizeL floatingSizeW,
-    move center,
+    size = { floatingSizeL, floatingSizeW },
+    center = true,
 })

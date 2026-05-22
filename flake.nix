@@ -3,7 +3,7 @@
 
   inputs = {
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/549bd84d6279f9852cae6225e372cc67fb91a4c1";
+    nixpkgs.url = "github:NixOS/nixpkgs/09917e5f7faca02ae436fe9422dde53467331788";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     
@@ -131,9 +131,7 @@
 
 
           modules = [
-          ./hyprland.nix
           ./waybar.nix
-          ./windowRules.nix
 
             {
               home.username = "yomi";
@@ -141,8 +139,10 @@
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
 
+              wayland.windowManager.hyprland.configType = "lua";
               wayland.windowManager.hyprland = {
                 enable = true;
+                extraConfig = builtins.readFile ./hyprland.lua;
               };
 
 
