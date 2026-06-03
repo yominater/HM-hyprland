@@ -3,9 +3,9 @@
 
   inputs = {
     #nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/09917e5f7faca02ae436fe9422dde53467331788";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     
     #hyprland.url = "github:hyprwm/Hyprland";
     #hyprland-plugins = {
@@ -26,21 +26,22 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-          ./hyprland.nix
-          ./waybar.nix
-          ./windowRules.nix
           ./foot.nix
+          ./hypridle.nix
+          ./waybar.nix
             {
               home.username = "yominater";
               home.homeDirectory = "/home/yominater";
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
 
-              wayland.windowManager.hyprland.enable = true;
-
+              wayland.windowManager.hyprland.configType = "lua";
+              wayland.windowManager.hyprland = {
+                enable = true;
+                extraConfig = builtins.readFile ./hyprland.lua;
+              };
 
               home.packages = with pkgs; [
-              nixgl
                hyprland-qtutils
                hyprpolkitagent
                bibata-cursors
@@ -176,6 +177,13 @@
           ];
         }; # fedora config
 
+      nix.gc = {
+        automatic = true;
+        dates = "daily";
+        options = "-d";
+        persistent = true;
+      
+      };
 
     }; # in
 } # flake
