@@ -173,7 +173,7 @@
   		];
   	};
   	"scroll-step" = 5;
-  	"on-click" = "pamixer -t";
+  	"on-click" = "~/.scripts/audio-switch.sh";
   	"on-click-right" = "terminator -e pavucontrol";
   };
 }; # mian bar

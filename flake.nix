@@ -75,8 +75,6 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-          ./laptop-hyprland.nix
-          ./windowRules.nix
           ./waybar.nix
           ./foot.nix
           ./hypridle.nix
@@ -87,13 +85,11 @@
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
 
-              wayland.windowManager.hyprland.enable = true;
-
-#              wayland.windowManager.hyprland.configType = "lua";
-#              wayland.windowManager.hyprland = {
-#                enable = true;
-#                extraConfig = builtins.readFile ./hyprland.lua;
-#              };
+              wayland.windowManager.hyprland.configType = "lua";
+              wayland.windowManager.hyprland = {
+                enable = true;
+                extraConfig = builtins.readFile ./laptop-hyprland.lua;
+              };
 
 
               home.packages = with pkgs; [
@@ -113,6 +109,7 @@
 	             libreoffice
 	             ranger
 	             fastfetch
+               pulseaudio
               ];
 
               home.sessionVariables = {

@@ -32,7 +32,7 @@ local terminal    = "foot"
 local fileManager = "thunar"
 local menu        = "wofi --show drun"
 local browser     = "chromium"
-local obsidianX   = "obsidian"
+local obsidian   = "obsidian"
 local hyprshot    = "hyprshot -m region --clipboard-only --freeze"
 
 -------------------
@@ -199,7 +199,6 @@ hl.config({
         preserve_split = true, -- You probably want this
         force_split = 2,
         default_split_ratio = 1.2,
-        pseudotile = true,
     },
 })
 
@@ -283,6 +282,7 @@ hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(terminal .. " --title floatin
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(obsidian))
 
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(hyprshot))
 
