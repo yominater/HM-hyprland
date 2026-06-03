@@ -136,7 +136,7 @@
 
 
           modules = [
-          ./waybar.nix
+          ./wayle.nix
 
             {
               home.username = "yomi";
@@ -149,6 +149,8 @@
                 enable = true;
                 extraConfig = builtins.readFile ./hyprland.lua;
               };
+
+              services.wayle.enable = true;
 
 
 
