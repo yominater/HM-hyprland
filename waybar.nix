@@ -13,6 +13,7 @@
 		"hyprland/workspaces"
 		"custom/right-arrow-dark"
     "wlr/taskbar"
+    "custom/workspaces"
 	];
 	modules-center = [
 		"custom/left-arrow-dark"
@@ -74,6 +75,12 @@
 		format = "";
 		tooltip = false;
 	};
+#  "custom/workspaces" = {
+#    exec = "~/Scripts/waybarWorkspaces.sh";
+#    return-type = "json";
+#    format = "{}";
+#    interval = 2;
+#    };
 "bluetooth" = {
 	# "controller" = "controller1"; // specify the alias of the controller if there are more than 1 on the system
 	"format" = "󰂲";
@@ -90,7 +97,7 @@
   "interval" = 1;
 };
   "custom/arch" = {
-    "format" = "";
+    "format" = "󰧲";
     "on-click" = "pkill waybar; waybar &";
     "tooltip" =false;
     "icon-size" = 16;

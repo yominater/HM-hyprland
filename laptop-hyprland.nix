@@ -85,6 +85,7 @@
       touchpad = {
         natural_scroll = false;
         scroll_factor = 0.5;
+        disable_while_typing = true;
       };
     };
     device = {
@@ -140,7 +141,7 @@
         "$mainMod SHIFT, RETURN, exec, $terminal --title floating"
         "$mainMod, F, exec, $browser"
         "$mainMod, P, exec, systemctl suspend"
-#        "F5, exec, sh -c '$hyprshot'"
+        "F5, exec, sh -c '$hyprshot'"
         "$mainMod, E, exec, $fileMan"
         "$mainMod, D, exec, $menu"
         "$mainMod, O, exec, $obsidianX"
