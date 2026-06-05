@@ -53,6 +53,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("cliphist")
   hl.exec_cmd("dunst")
   hl.exec_cmd("dunst")
+  hl.exec_cmd("qs -c overview")
 end)
 
 
@@ -340,6 +341,8 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
+
+hl.bind("SUPER + TAB", hl.dsp.exec_cmd("qs ipc -c overview call overview toggle"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

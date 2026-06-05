@@ -167,6 +167,8 @@
                cliphist
                wl-clipboard
                dmenu
+               quickshell
+               qt6.qtwayland
 
               ];
        	      home.pointerCursor = {
