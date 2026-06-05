@@ -282,7 +282,7 @@ hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(hyprshot))
+hl.bind(winMod .. " + SHIFT + S", hl.dsp.exec_cmd(hyprshot))
 
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
