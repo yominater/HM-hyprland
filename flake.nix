@@ -91,6 +91,8 @@
                 extraConfig = builtins.readFile ./laptop-hyprland.lua;
               };
 
+              home.file.".config/sway/config".source = ./sway.conf;
+
 
               home.packages = with pkgs; [
                hyprland-qtutils
@@ -149,6 +151,9 @@
                 enable = true;
                 extraConfig = builtins.readFile ./hyprland.lua;
               };
+
+              home.file.".config/sway/config".source = ./sway.conf;
+
 
               services.wayle.enable = true;
 

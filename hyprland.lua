@@ -141,6 +141,8 @@ hl.config({
     },
     cursor = {
       inactive_timeout = 3,
+      no_hardware_cursors = 1,
+      warp_on_change_workspace = 1,
     },
 
     animations = {
@@ -226,6 +228,8 @@ hl.config({
         force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
           vrr = 2,
+          enable_swallow = true,
+          middle_click_paste = false,
     },
 })
 
@@ -247,6 +251,7 @@ hl.config({
         follow_mouse = 1,
 
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        accel_profile = "flat",
 
         touchpad = {
             natural_scroll = false,
@@ -267,6 +272,15 @@ hl.device({
     sensitivity = -0.5,
 })
 
+-------------
+--- BINDS ---
+-------------
+
+hl.config({
+  binds = {
+    hide_special_on_workspace_change = true,
+  },
+})
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -432,4 +446,11 @@ hl.window_rule({
     float = true,
     size = { floatingSizeL, floatingSizeW },
     center = true,
+})
+hl.window_rule({
+    name = "Steam",
+    match = {
+        title = "^.*Steam.*"
+    },
+    workspace = "0",
 })
