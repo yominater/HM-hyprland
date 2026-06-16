@@ -112,6 +112,8 @@
                nerd-fonts.ubuntu
                dmenu
 	             libreoffice
+               hunspell
+               hunspellDicts.en-us
 	             ranger
 	             fastfetch
                pulseaudio
