@@ -18,6 +18,10 @@
     let
       system = "x86_64-linux"; # change if needed
       pkgs = nixpkgs.legacyPackages.${system};
+      swayConfig = ./sway.conf;
+      sharedSway = { ... }: {
+        home.file.".config/sway/config".source = swayConfig;
+      };
     in {
       ############
       ### Mint ###
@@ -91,7 +95,6 @@
                 extraConfig = builtins.readFile ./laptop-hyprland.lua;
               };
 
-              home.file.".config/sway/config".source = ./sway.conf;
 
 
               home.packages = with pkgs; [
@@ -112,6 +115,7 @@
 	             ranger
 	             fastfetch
                pulseaudio
+               sway
               ];
 
               home.sessionVariables = {
@@ -152,13 +156,9 @@
                 extraConfig = builtins.readFile ./hyprland.lua;
               };
 
-              home.file.".config/sway/config".source = ./sway.conf;
 
 
               services.wayle.enable = true;
-
-
-
 
               home.packages = with pkgs; [
                hyprland-qtutils
