@@ -81,32 +81,16 @@
           modules = [
           ./waybar.nix
           ./foot.nix
-          ./hypridle.nix
-          ./hyprlock.nix
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
 
-              wayland.windowManager.hyprland.configType = "lua";
-              wayland.windowManager.hyprland = {
-                enable = true;
-                extraConfig = builtins.readFile ./laptop-hyprland.lua;
-              };
-
-
-
               home.packages = with pkgs; [
-               hyprland-qtutils
-               hyprpolkitagent
                bibata-cursors
-               hyprpaper
-               hyprsunset
-               awww
                wofi
                grim
-               hyprshot
                cliphist
                wl-clipboard
                nerd-fonts.ubuntu
@@ -118,7 +102,10 @@
 	             fastfetch
                pulseaudio
                sway
+               swayidle
+               swaylock
               ];
+
 
               home.sessionVariables = {
                 EDITOR = "nvim";
@@ -192,13 +179,6 @@
           ];
         }; # fedora config
 
-      nix.gc = {
-        automatic = true;
-        dates = "daily";
-        options = "-d";
-        persistent = true;
-      
-      };
 
     }; # in
 } # flake
