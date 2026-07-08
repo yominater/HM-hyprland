@@ -81,11 +81,16 @@
           modules = [
           ./waybar.nix
           ./foot.nix
+          ./sway2.nix
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
+
+              xdg.configFile."waybar/configSway.jsonc".source = ./waybar/configSway.jsonc;
+              xdg.configFile."waybar/styleSway.css".source = ./waybar/styleSway.css;
+
 
               home.packages = with pkgs; [
                bibata-cursors
@@ -95,15 +100,11 @@
                wl-clipboard
                nerd-fonts.ubuntu
                dmenu
-	             libreoffice
-               hunspell
-               hunspellDicts.en-us
+	             libreoffice hunspell hunspellDicts.en-us
 	             ranger
 	             fastfetch
                pulseaudio
-               sway
-               swayidle
-               swaylock
+                swayidle swaylock
               ];
 
 
