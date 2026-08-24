@@ -179,7 +179,7 @@
               wayland.windowManager.hyprland.configType = "lua";
               wayland.windowManager.hyprland = {
                 enable = true;
-                extraConfig = builtins.readFile ./hyprland.lua;
+                #extraConfig = builtins.readFile ./hyprland.lua;
               };
 
 
@@ -200,6 +200,8 @@
                dmenu
                quickshell
                qt6.qtwayland
+               qbittorrent
+               jdk
 
               ];
        	      home.pointerCursor = {

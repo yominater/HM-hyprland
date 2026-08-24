@@ -243,7 +243,7 @@ hl.config({
         kb_layout  = "us",
         kb_variant = "",
         kb_model   = "",
-        kb_options = "caps:escape_shifted_capslock",
+        kb_options = "",
         kb_rules   = "",
         repeat_rate = 32,
         repeat_delay = 200,
@@ -251,7 +251,7 @@ hl.config({
         follow_mouse = 1,
 
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-        accel_profile = "flat",
+        accel_profile = "custom 0.5 0 0.4 1.2 1.8",
 
         touchpad = {
             natural_scroll = false,
@@ -452,5 +452,23 @@ hl.window_rule({
     match = {
         title = "^.*Steam.*"
     },
-    workspace = "0",
+    workspace = "10",
+})
+hl.window_rule({
+    name = "Obsidian Settings",
+    match = {
+        title = "^.*Settings.*",
+        class = "obsidian"
+    },
+    float = true,
+    center = true,
+})
+hl.window_rule({
+    name = "Obsidian Community Plugins",
+    match = {
+        title = "^.*Community.*",
+        class = "obsidian"
+    },
+    float = true,
+    center = true,
 })
