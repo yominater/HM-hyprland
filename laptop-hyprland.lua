@@ -435,22 +435,3 @@ hl.window_rule({
     size = { floatingSizeL, floatingSizeW },
     center = true,
 })
-hl.window_rule({
-    name = "Obsidian Settings",
-    match = {
-        title = "^.*Settings.*",
-        class = "obsidian"
-    },
-    float = true,
-    center = true,
-})
-hl.window_rule({
-    name = "Obsidian Community Plugins",
-    match = {
-        title = "^.*Community.*",
-        class = "obsidian"
-    },
-    float = true,
-    center = true,
-})
-
