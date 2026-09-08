@@ -68,7 +68,7 @@
       gaps.inner = 0;
       gaps.smartGaps = true;
       window.hideEdgeBorders = "smart";
-      window.border = 0;
+      window.border = 2;
       window.titlebar = false;
 
       keybindings = {
@@ -109,7 +109,6 @@
         "Mod1+v" = "split h";
         "Mod1+c" = "split v";
         "Mod1+a" = "fullscreen toggle";
-        "F4" = "fullscreen toggle";
         "Mod1+Shift+e" = "layout tabbed";
         "Mod1+e" = "layout toggle split";
         "Mod1+Shift+space" = "floating toggle";

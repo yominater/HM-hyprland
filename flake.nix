@@ -91,8 +91,45 @@
               xdg.configFile."waybar/configSway.jsonc".source = ./waybar/configSway.jsonc;
               xdg.configFile."waybar/styleSway.css".source = ./waybar/styleSway.css;
 
+              wayland.windowManager.hyprland.configType = "lua";
+              wayland.windowManager.hyprland = {
+                enable = true;
+                extraConfig = builtins.readFile ./laptop-hyprland.lua;
+                plugins = [
+                  inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+                  ];
+              };
+
+
+              gtk = {
+                enable = true;
+                colorScheme = "dark";
+              };
+
+                programs.chromium = {
+                  enable = true;
+                  commandLineArgs = [
+                    "--enable-features=WebContentsForceDark"
+                    "--ozone-platform=wayland"
+                    "--render-node-override=/dev/dri/renderD128"
+                    "--restart"
+                    "--flag-switches-begin"
+                    "--close-confirmation=last"
+                    "--disable-top-sites"
+                    "--extension-mime-request-handling=always-prompt-for-install" 
+                    "--hide-fullscreen-exit-ui"
+                    "--show-avatar-button=incognito-and-guest"
+                    "--enable-features=WebContentsForceDark"
+                    "--disable-features=ClearDataOnExit"
+                    "--flag-switches-end"
+                  ];
+                };
+
+
+
 
               home.packages = with pkgs; [
+              awww hyprsunset
                bibata-cursors
                wofi
                grim
@@ -104,7 +141,8 @@
 	             ranger
 	             fastfetch
                pulseaudio
-                swayidle swaylock
+               swayidle swaylock
+               niri xwayland-satellite
               ];
 
 
@@ -133,6 +171,7 @@
 
           modules = [
           ./wayle.nix
+          ./hypridle.nix
 
             {
               home.username = "yomi";

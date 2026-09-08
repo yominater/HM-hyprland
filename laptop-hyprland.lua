@@ -354,7 +354,7 @@ end
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
 -- Example window rules that are useful
-local floatingSizeL = 600
+local floatingSizeL = 800
 local floatingSizeW = 350
 
 
@@ -402,7 +402,7 @@ hl.window_rule({
 hl.window_rule({
     name = "Open Dialog",
     match = {
-        title = "^Open.*"
+        title = "(?i)\bopen\b"
     },
     float = true,
     size = { floatingSizeL, floatingSizeW },
