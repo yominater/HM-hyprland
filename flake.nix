@@ -18,10 +18,6 @@
     let
       system = "x86_64-linux"; # change if needed
       pkgs = nixpkgs.legacyPackages.${system};
-      swayConfig = ./sway.conf;
-      sharedSway = { ... }: {
-        home.file.".config/sway/config".source = swayConfig;
-      };
     in {
       ############
       ### Mint ###
@@ -91,13 +87,14 @@
               xdg.configFile."waybar/configSway.jsonc".source = ./waybar/configSway.jsonc;
               xdg.configFile."waybar/styleSway.css".source = ./waybar/styleSway.css;
 
+              #xdg.configFile."waybar/configNiri.jsonc".source = ./waybar/configNiri.jsonc;
+              #xdg.configFile."waybar/styleNiri.css".source = ./waybar/styleNiri.css;
+              xdg.configFile."niri/config.kdl".source = ./config.kdl;
+
               wayland.windowManager.hyprland.configType = "lua";
               wayland.windowManager.hyprland = {
                 enable = true;
                 extraConfig = builtins.readFile ./laptop-hyprland.lua;
-                plugins = [
-                  inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-                  ];
               };
 
 
