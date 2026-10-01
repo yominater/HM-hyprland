@@ -68,10 +68,10 @@
             }
           ];
         };
-      #############
-      ### NixOS ###
-      #############
-      homeConfigurations."yomi@nixos" =
+      ################
+      ### Yomibook ###
+      ################
+      homeConfigurations."yomi@yomibook" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
@@ -157,7 +157,7 @@
 
             }
           ];
-        }; # yomi@nixos config
+        }; # yomi@yomibook config
       ##############
       ### Fedora ###
       ##############
