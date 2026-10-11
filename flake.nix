@@ -68,6 +68,7 @@
             }
           ];
         };
+	
       ################
       ### Yomibook ###
       ################
@@ -89,7 +90,7 @@
 
               #xdg.configFile."waybar/configNiri.jsonc".source = ./waybar/configNiri.jsonc;
               #xdg.configFile."waybar/styleNiri.css".source = ./waybar/styleNiri.css;
-              xdg.configFile."niri/config.kdl".source = ./config.kdl;
+              xdg.configFile."niri/config.kdl".source = ./desktop/niri/config.kdl;
 
               wayland.windowManager.hyprland.configType = "lua";
               wayland.windowManager.hyprland = {
@@ -159,6 +160,78 @@
             }
           ];
         }; # yomi@yomibook config
+      ################
+      ### Thinkpad ###
+      ################
+      homeConfigurations."yomi@thinkpad" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+          ./waybar.nix
+          ./foot.nix
+          ./sway2.nix
+          ./firefox.nix
+          ./libreoffice.nix
+            {
+              home.username = "yomi";
+              home.homeDirectory = "/home/yomi";
+              home.stateVersion = "24.05";
+              programs.home-manager.enable = true;
+
+              xdg.configFile."waybar/configSway.jsonc".source = ./waybar/configSway.jsonc;
+              xdg.configFile."waybar/styleSway.css".source = ./waybar/styleSway.css;
+
+              xdg.configFile."waybar/configNiri.jsonc".source = ./waybar/configNiri.jsonc;
+              xdg.configFile."waybar/styleNiri.css".source = ./waybar/styleNiri.css;
+              xdg.configFile."niri/config.kdl".source = ./desktop/niri/configThinkpad.kdl;
+
+              wayland.windowManager.hyprland.configType = "lua";
+              wayland.windowManager.hyprland = {
+                enable = true;
+                extraConfig = builtins.readFile ./laptop-hyprland.lua;
+              };
+
+
+              gtk = {
+                enable = true;
+                colorScheme = "dark";
+              };
+
+              home.packages = with pkgs; [
+              awww hyprsunset
+               bibata-cursors
+               wofi
+               grim
+               cliphist
+               wl-clipboard
+               nerd-fonts.ubuntu
+               dmenu
+	             libreoffice hunspell hunspellDicts.en-us
+	             ranger
+	             fastfetch
+               pulseaudio
+               swayidle swaylock
+               niri xwayland-satellite
+               noctalia
+              ];
+
+
+              home.sessionVariables = {
+                EDITOR = "nvim";
+              };
+
+      	      home.pointerCursor = {
+      	       name = "Bibata-Modern-Ice";
+      	       package = pkgs.bibata-cursors;
+      	       size = 30;
+      	       gtk.enable = true;
+      	       hyprcursor.enable = true;
+      	      };
+
+            }
+          ];
+        }; # yomi@thinkpad config
+
       ##############
       ### Fedora ###
       ##############
