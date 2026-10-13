@@ -101,6 +101,7 @@
               gtk = {
                 enable = true;
                 colorScheme = "dark";
+                iconTheme.name = "Papirus-Dark";
               };
 
                 programs.chromium = {
@@ -128,18 +129,18 @@
               home.packages = with pkgs; [
               awww hyprsunset
                bibata-cursors
-               wofi
                grim
                cliphist
                wl-clipboard
                nerd-fonts.ubuntu
-               dmenu
 	             libreoffice hunspell hunspellDicts.en-us
 	             ranger
 	             fastfetch
                pulseaudio
                swayidle swaylock
                niri xwayland-satellite
+               noctalia
+               papirus-icon-theme
               ];
 
 
