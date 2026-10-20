@@ -29,8 +29,8 @@ programs.firefox = {
 
     # Access Restrictions
     BlockAboutConfig              = false;
-    BlockAboutProfiles            = true;
-    BlockAboutSupport             = true;
+    BlockAboutProfiles            = false;
+    BlockAboutSupport             = false;
 
     # UI and Behavior
     DisplayMenuBar                = "never";
@@ -39,11 +39,24 @@ programs.firefox = {
     OfferToSaveLogins             = false;
     DefaultDownloadDirectory      = "${config.home.homeDirectory}/Downloads";
 
+    # Blocked Websites
+    WebsiteFilter = {
+      Block = [
+        "*://*.example.com/*"
+        "*://*.youtube.com/*"
+        "*://*.reddit.com/*"
+      ];
+
+      Exceptions = [
+        "*://music.youtube.com/*"
+      ];
+    };
+
     # Extensions
     ExtensionSettings = let
       moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
     in {
-      "*".installation_mode = "blocked";
+      "*".installation_mode = "allowed";
 
       "uBlock0@raymondhill.net" = {
         install_url       = moz "ublock-origin";
@@ -100,7 +113,32 @@ programs.firefox = {
 
   profiles.default = {
   settings = {
-  "browser.newtabpage.activity-stream.showWeather" = false;
+    "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+    "browser.newtabpage.activity-stream.feeds.topsites" = false;
+    "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
+    "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+    "browser.newtabpage.activity-stream.showWeather" = false;
+    "browser.newtabpage.activity-stream.showSponsored" = false;
+    "browser.toolbars.bookmarks.visibility" = "always";
+  };
+  bookmarks = {
+    force = true;
+  
+    settings = [
+      {
+        name = "Nix sites";
+        toolbar = true;
+        bookmarks = [
+          {
+            name = "School";
+            bookmarks = [
+              { name = "PG Campus"; url = "https://campus.purdueglobal.edu/home"; }
+              { name = "APA Citation"; url = "https://www.mybib.com/tools/apa-citation-generator";}
+            ];
+          }
+        ];
+      }
+    ];
   };
 
   search = {

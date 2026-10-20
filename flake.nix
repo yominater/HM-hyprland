@@ -12,9 +12,13 @@
     #  url = "github:hyprwm/hyprland-plugins";
     #  inputs.hyprland.follows = "hyprland";
     #};
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux"; # change if needed
       pkgs = nixpkgs.legacyPackages.${system};
@@ -170,7 +174,7 @@
           ./waybar.nix
           ./foot.nix
           ./sway2.nix
-          ./firefox.nix
+          ./firefox/firefox.nix
           ./libreoffice.nix
             {
               home.username = "yomi";
@@ -178,12 +182,9 @@
               home.stateVersion = "24.05";
               programs.home-manager.enable = true;
 
-              xdg.configFile."waybar/configSway.jsonc".source = ./waybar/configSway.jsonc;
-              xdg.configFile."waybar/styleSway.css".source = ./waybar/styleSway.css;
-
-              xdg.configFile."waybar/configNiri.jsonc".source = ./waybar/configNiri.jsonc;
-              xdg.configFile."waybar/styleNiri.css".source = ./waybar/styleNiri.css;
               xdg.configFile."niri/config.kdl".source = ./desktop/niri/configThinkpad.kdl;
+
+              xdg.configFile."noctalia/settings.toml".source = ./desktop/noctalia/settings.toml;
 
               wayland.windowManager.hyprland.configType = "lua";
               wayland.windowManager.hyprland = {
@@ -196,6 +197,7 @@
                 enable = true;
                 colorScheme = "dark";
               };
+
 
               home.packages = with pkgs; [
               awww hyprsunset
@@ -211,8 +213,9 @@
 	             fastfetch
                pulseaudio
                swayidle swaylock
-               niri xwayland-satellite
+               # niri xwayland-satellite
                noctalia
+               inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
               ];
 
 

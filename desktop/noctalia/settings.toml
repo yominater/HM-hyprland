@@ -1,0 +1,131 @@
+config_version = 14
+
+[bar.default]
+capsule_radius = 4
+end = [
+    "media",
+    "tray",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "notifications",
+    "session"
+]
+font_family = "Ubuntu Sans Mono"
+font_weight = 700
+margin_ends = 0
+padding = 10
+radius = 0
+start = [ "workspaces", "wallpaper" ]
+thickness = 36
+
+[calendar]
+enabled = true
+
+    [calendar.account.gmail]
+    color = "secondary"
+    name = "Gmail"
+    type = "google"
+
+[desktop_widgets]
+enabled = false
+
+[dock]
+main_axis_padding = 10
+
+[location]
+address = "Spartanburg, sc"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 768.0
+    cy = 682.0
+    output = "eDP-1"
+    placement_height = 864.0
+    placement_width = 1536.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+
+[shell]
+niri_overview_type_to_launch_enabled = true
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Oxocarbon"
+mode = "dark"
+shell_mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+[wallpaper]
+directory = "/home/yomi/images/wallpapers"
+
+    [wallpaper.default]
+    path = "/home/yomi/images/wallpapers/current/current.jpg"
+
+    [wallpaper.last]
+    path = "/home/yomi/images/wallpapers/current/current.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/yomi/images/wallpapers/current/current.jpg"
+
+[widget.battery]
+color = "tertiary"
+
+[widget.brightness]
+color = "secondary"
+
+[widget.clipboard]
+enabled = false
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+enabled = false
+
+[widget.session]
+color = "error"
+
+[widget.volume]
+color = "primary"
+
+[widget.workspaces]
+active_pill_size = 1.0
+empty_color = "outline"
+font_scale = 1.05
+occupied_color = "#D4D5DA"

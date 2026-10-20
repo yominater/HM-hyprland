@@ -612,8 +612,8 @@ binds {
     Mod+Ctrl+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
 
-    Alt+A { maximize-column; }
-    Alt+SHIFT+A { fullscreen-window; }
+    Alt+A repeat=false { maximize-column; }
+    Alt+SHIFT+A repeat=false { fullscreen-window; }
 
     // While maximize-column leaves gaps and borders around the window,
     // maximize-window-to-edges doesn't: the window expands to the edges of the screen.

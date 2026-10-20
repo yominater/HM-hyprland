@@ -1,4 +1,10 @@
 {
+  xdg.configFile."waybar/configSway.jsonc".source = ./waybar/configSway.jsonc;
+  xdg.configFile."waybar/styleSway.css".source = ./waybar/styleSway.css;
+
+  xdg.configFile."waybar/configNiri.jsonc".source = ./waybar/configNiri.jsonc;
+  xdg.configFile."waybar/styleNiri.css".source = ./waybar/styleNiri.css;
+
   programs.waybar = {
   enable = true;
   settings = {
