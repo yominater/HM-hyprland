@@ -6,19 +6,23 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     #hyprland.url = "github:hyprwm/Hyprland";
     #hyprland-plugins = {
     #  url = "github:hyprwm/hyprland-plugins";
     #  inputs.hyprland.follows = "hyprland";
     #};
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #zen-browser = {
+    #  url = "github:0xc000022070/zen-browser-flake";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nixvim, ... }:
     let
       system = "x86_64-linux"; # change if needed
       pkgs = nixpkgs.legacyPackages.${system};
@@ -169,6 +173,9 @@
       ################
       homeConfigurations."yomi@thinkpad" =
         home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = {
+    inherit inputs;
+  };
           inherit pkgs;
           modules = [
           ./waybar.nix
@@ -176,6 +183,7 @@
           ./sway2.nix
           ./firefox/firefox.nix
           ./libreoffice.nix
+          ./nixvim.nix
             {
               home.username = "yomi";
               home.homeDirectory = "/home/yomi";
@@ -215,7 +223,7 @@
                swayidle swaylock
                # niri xwayland-satellite
                noctalia
-               inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+               #inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
               ];
 
 

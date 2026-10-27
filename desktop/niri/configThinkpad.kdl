@@ -281,10 +281,11 @@ layout {
 }
 
 blur {
-  passes 3
+  on
+  passes 2
   offset 1
-  noise 0.005
-  saturation 1.5
+  noise 0.010
+  saturation 1.0
 }
 
 overview {
@@ -360,6 +361,12 @@ layer-rule {
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
+  match app-id="foot"
+  background-effect {
+    blur true
+  }
+}
+window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
@@ -398,6 +405,39 @@ window-rule {
 /-window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+window-rule {
+  match app-id="^.noctalia-wrapp$"
+  background-effect {
+    xray false
+  }
+}
+
+window-rule {
+    opacity 1.0
+    background-effect {
+        xray false
+    }
+}
+
+layer-rule {
+    match namespace="noctalia-bar-default"
+    background-effect {
+        xray false
+    }
+}
+layer-rule {
+    match namespace="noctalia-panel"
+    background-effect {
+        xray false
+    }
+}
+layer-rule {
+    match namespace="noctalia-attached-panel"
+    background-effect {
+        xray false
+    }
 }
 
 binds {
@@ -683,4 +723,5 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     //Alt+Shift+P { power-off-monitors; }
+
 }

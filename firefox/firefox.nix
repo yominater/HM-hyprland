@@ -42,13 +42,13 @@ programs.firefox = {
     # Blocked Websites
     WebsiteFilter = {
       Block = [
-        "*://*.example.com/*"
         "*://*.youtube.com/*"
         "*://*.reddit.com/*"
       ];
 
       Exceptions = [
         "*://music.youtube.com/*"
+        "*://accounts.youtube.com/*"
       ];
     };
 
@@ -120,6 +120,9 @@ programs.firefox = {
     "browser.newtabpage.activity-stream.showWeather" = false;
     "browser.newtabpage.activity-stream.showSponsored" = false;
     "browser.toolbars.bookmarks.visibility" = "always";
+    "browser.tabs.tabClipWidth" = "76";
+    "browser.tabs.tabMinWidth" = "76";
+    
   };
   bookmarks = {
     force = true;
