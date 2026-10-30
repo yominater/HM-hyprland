@@ -190,6 +190,19 @@ programs.firefox = {
         icon           = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
         definedAliases = [ "@nw" ];
       };
+      "Home-manager Options" = {
+        urls = [
+          {
+            template = "https://home-manager-options.extranix.com/";
+            params = [
+              { name = "release"; value = "release-26.05"; }
+              { name = "query";   value = "{searchTerms}"; }
+            ];
+          }
+        ];
+        icon           = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@hm" ];
+      };
     };
     };
   };
