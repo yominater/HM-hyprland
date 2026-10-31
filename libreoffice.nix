@@ -4,4 +4,7 @@
     recursive = true;
     force = true;
   };
+  home.packages = with pkgs; [
+    libreoffice hunspell hunspellDicts.en-us
+  ];
 }
