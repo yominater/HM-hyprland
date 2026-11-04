@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, inputs, ...}:
 {
   imports = [
   ../desktop/waybar.nix
@@ -7,7 +7,7 @@
   ../firefox/firefox.nix
   ../libreoffice.nix
   ../nixvim.nix
-  ../desktop/niri/niri.nix
+    ../desktop/gtk.nix
   #../yazi
   ];
   home.username = "yomi";
@@ -15,11 +15,15 @@
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;
   
+  xdg.configFile."niri/config.kdl".source = ../desktop/niri/configThinkpad.kdl;
+
+  xdg.configFile."noctalia/settings.toml".source = ../desktop/noctalia/settings.toml;
+
   
-  wayland.windowManager.hyprland.configType = "lua";
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = builtins.readFile ../desktop/hypr/laptop-hyprland.lua;
+    configType = "lua";
+    #extraConfig = builtins.readFile ../desktop/hypr/laptop-hyprland.lua;
   };
   
   

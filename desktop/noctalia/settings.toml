@@ -1,5 +1,8 @@
 [bar.default]
+background_opacity = 0.3899999912828207
+border_width = 2.0
 capsule_radius = 4
+contact_shadow = true
 end = [
     "media",
     "tray",
@@ -15,9 +18,12 @@ end = [
 ]
 font_family = "Ubuntu Sans Mono"
 font_weight = 700
+layer = "top"
 margin_ends = 0
 padding = 10
+position = "left"
 radius = 0
+reserve_space = false
 start = [ "workspaces", "wallpaper", "launcher", "caffeine" ]
 thickness = 36
 
@@ -33,7 +39,14 @@ enabled = true
 enabled = false
 
 [dock]
+background_opacity = 0.29999999329447746
+enabled = true
+layer = "overlay"
 main_axis_padding = 10
+pinned = [ "firefox", "foot" ]
+reserve_space = false
+show_dots = true
+smart_auto_hide = true
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -59,7 +72,7 @@ address = "Spartanburg, sc"
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@eDP-1" ]
+widget_order = [ "lockscreen-login-box@winit", "lockscreen-login-box@eDP-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -93,6 +106,33 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+    [lockscreen_widgets.widget."lockscreen-login-box@winit"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 436.0
+    cy = 891.0
+    output = "winit"
+    placement_height = 1073.0
+    placement_width = 871.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@winit".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
 [nightlight]
 enabled = true
 
@@ -108,11 +148,56 @@ niri_overview_type_to_launch_enabled = true
     [shell.panel]
     open_near_click_control_center = true
     open_near_click_session = true
+    transparency_mode = "glass"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    glyph = "hibernate"
+    label = "Hibernate"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
 
 [theme]
+builtin = "Tokyo-Night"
 community_palette = "Oxocarbon"
-builtin = "Catppuccin"
-mode = "light"
+mode = "dark"
 shell_mode = "dark"
 source = "community"
 wallpaper_scheme = "m3-content"
@@ -121,13 +206,13 @@ wallpaper_scheme = "m3-content"
 directory = "/home/yomi/images/wallpapers"
 
     [wallpaper.default]
-    path = "/home/yomi/images/wallpapers/Minimal Landscapes/8615002-mountains-retreat-minimal-beautiful-4k.jpg"
+    path = "/home/yomi/images/wallpapers/Aenami/alena-aenami-budapest.jpg"
 
     [wallpaper.last]
-    path = "/home/yomi/images/wallpapers/Minimal Landscapes/8615002-mountains-retreat-minimal-beautiful-4k.jpg"
+    path = "/home/yomi/images/wallpapers/Aenami/alena-aenami-budapest.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/yomi/images/wallpapers/Minimal Landscapes/8615002-mountains-retreat-minimal-beautiful-4k.jpg"
+    path = "/home/yomi/images/wallpapers/Aenami/alena-aenami-budapest.jpg"
 
 [widget.battery]
 color = "tertiary"
@@ -154,4 +239,10 @@ color = "primary"
 active_pill_size = 1.0
 empty_color = "outline"
 font_scale = 1.05
+label_source = "name"
+labels_only_when_occupied = true
+max_label_chars = 14
 occupied_color = "#D4D5DA"
+
+    [widget.workspaces.actions]
+    right = "exec sh ~/Projects/niriRenameWorkspaces.sh"
