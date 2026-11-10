@@ -1,9 +1,8 @@
-{ pkgs, ...}:
-imports = [
-../desktop/wayle.nix
-../desktop/hypr/hypridle.nix
-
-  {
+{ pkgs, ...}: {
+  imports = [
+  ../desktop/wayle.nix
+  ../desktop/hypr/hypridle.nix
+  ];
     home.username = "yomi";
     home.homeDirectory = "/home/yomi";
     home.stateVersion = "24.05";
@@ -11,7 +10,7 @@ imports = [
 
     wayland.windowManager.hyprland.configType = "lua";
     wayland.windowManager.hyprland = {
-      enable = true;
+      enable = false;
       #extraConfig = builtins.readFile ./hyprland.lua;
     };
 
@@ -35,4 +34,7 @@ imports = [
      qt6.qtwayland
      qbittorrent
      jdk
-     ]
+     yazi
+     beammp-launcher
+     ];
+}
