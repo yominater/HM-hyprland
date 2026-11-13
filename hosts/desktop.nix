@@ -37,6 +37,7 @@
   # niri xwayland-satellite
   noctalia
   #inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+   normcap # OCR
  ];
 
 

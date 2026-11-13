@@ -7,6 +7,11 @@
 // Find the full list of options on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Input
 prefer-no-csd
+gestures {
+  hot-corners {
+    off
+  }
+}
 input {
     keyboard {
         xkb {
@@ -425,6 +430,7 @@ layer-rule {
     match namespace="noctalia-bar-default"
     background-effect {
         xray false
+      blur false
     }
 }
 layer-rule {
@@ -461,6 +467,8 @@ binds {
     Alt+Shift+P hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Alt+F hotkey-overlay-title="Open a Browser" { spawn "firefox";}
     Alt+y hotkey-overlay-title="Open Obsidian" { spawn "obsidian"; }
+    Alt+e hotkey-overlay-title="Open Files" { spawn "nautilus"; }
+    Alt+s hotkey-overlay-title="OCR" { spawn "normcap"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

@@ -7,7 +7,7 @@
   ../firefox/firefox.nix
   ../libreoffice.nix
   ../nixvim.nix
-    ../desktop/gtk.nix
+  ../desktop/gtk.nix
   #../yazi
   ];
   home.username = "yomi";
@@ -20,29 +20,26 @@
   xdg.configFile."noctalia/settings.toml".source = ../desktop/noctalia/settings.toml;
 
   
-  wayland.windowManager.hyprland = {
-    enable = true;
-    configType = "lua";
-    #extraConfig = builtins.readFile ../desktop/hypr/laptop-hyprland.lua;
-  };
+#  wayland.windowManager.hyprland = {
+#    enable = true;
+#    configType = "lua";
+#    extraConfig = builtins.readFile ../desktop/hypr/laptop-hyprland.lua;
+#  };
   
   
   home.packages = with pkgs; [
-  awww hyprsunset
+#  awww hyprsunset
    bibata-cursors
    wofi
    grim
-   cliphist
-   wl-clipboard
-   nerd-fonts.ubuntu
    dmenu
    ranger
    fastfetch
-   pulseaudio
-   swayidle swaylock
+#   swayidle swaylock
    # niri xwayland-satellite
    noctalia
    #inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+   normcap
   ];
 }
 
