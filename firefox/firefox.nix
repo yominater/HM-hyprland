@@ -122,6 +122,7 @@ programs.firefox = {
     "browser.toolbars.bookmarks.visibility" = "always";
     "browser.tabs.tabClipWidth" = "76";
     "browser.tabs.tabMinWidth" = "76";
+    "widget.disable-swipe-tracker" = true;
     
   };
   bookmarks = {
@@ -132,11 +133,15 @@ programs.firefox = {
         name = "Nix sites";
         toolbar = true;
         bookmarks = [
-          {
-            name = "School";
+          { name = "School";
             bookmarks = [
               { name = "PG Campus"; url = "https://campus.purdueglobal.edu/home"; }
               { name = "APA Citation"; url = "https://www.mybib.com/tools/apa-citation-generator";}
+            ];
+          }
+          { name = "Religion";
+            bookmarks = [
+              { name = "Cov PCA Sermons"; url = "https://www.covpca.org/worship/watch-past-sermons.cfm"; }
             ];
           }
         ];
